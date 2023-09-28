@@ -1,6 +1,8 @@
+#GPS receiver
+
 import gpsd
 from geopy.geocoders import Nominatim
-
+from gtts import gTTS
 # Initialize the Nominatim geocoder
 geolocator = Nominatim(user_agent="myGeocoder")
 
@@ -24,7 +26,15 @@ except KeyboardInterrupt:
     print("GPS data acquisition stopped.")
 
 
-print("ciao, è sucesso un incidente in"+ address )
+# Messaggio di testo da convertire in audio
+testo = "ciao, è avvenuto un incidente nella seguente via:" +address + " vi preghiamo di verificare l' incidente, grazie"
+
+# Crea un oggetto gTTS con il messaggio di testo
+tts = gTTS(text=testo, lang='it')  # 'it' sta per la lingua italiana, puoi cambiarla secondo le tue preferenze
+
+# Salva l'audio in un file MP3
+tts.save("messaggio.mp3")
+
 
 # Disconnect from GPSD when done
 gpsd.disconnect()
