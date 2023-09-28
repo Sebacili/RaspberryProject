@@ -23,5 +23,8 @@ try:
 except KeyboardInterrupt:
     print("GPS data acquisition stopped.")
 
+
+print("ciao, è sucesso un incidente in"+ address )
+
 # Disconnect from GPSD when done
 gpsd.disconnect()
